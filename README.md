@@ -1,10 +1,19 @@
 # week-5-Patrick-Abdullah-Suraj
 
+## [PKC](https://dynamic-torrone-f376c2.netlify.app/)
+It's a piano that counts the amount of keys you press. It has sound...
+
+
+
+
 ## User Stories
 - As a musican, i want to feel like i'm playing a piano.
 - As someone who loves listening to music, i want to be able to hear the audio.
 - As a gamer, i want to be scored on my performance. 
 - As someone who enjoy challenges, i want to be challenged by the game. 
+
+## Alpha version
+In the `add-game` branch you might be able to find some experimental features.
 
 ## Acceptance Criteria 
 - Accept at least 2 kinds of user input
@@ -46,8 +55,45 @@
 
 #### Thursday
 (Before Lunch)
-- Create loop to validate user input 🤔🤔🤔
+- Create loop to validate user input
 - Worked in pairs of 3 with 10min rotations
 
 (After Lunch)
 - Deploy to netlify issue...
+
+Make sure there’s a README.md that describes the project
+
+
+
+
+
+
+
+## Roles
+
+- Patrick: Scrum Facilitator
+- Abdullah: QA
+- Suraj: UX/UI
+
+## Setup
+
+Make sure you have Git and Node (v18) installed.
+
+Clone this repo and cd into the directory
+
+Run ```npm install``` to install all the dependencies
+
+Run ```npm run dev``` to run the project
+
+## Problem Solving approach
+Throughout our project we had severe challenges which led us to a new approach to solve problems.
+We learnt to split our issues into multiple small issues, create a list of tasks to work on in order and use pseudo-code before tackling the challenge.
+
+
+## Tools Used
+Discord
+VS Code Live Share extension
+Github Project Board
+Software Methodologies
+During our planning stage, we identified there were functions and components that would be reused in the project. As a result, we decided to include modularization and attempted to follow the DRY principle.
+
