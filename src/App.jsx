@@ -1,15 +1,19 @@
 import "./App.css"
 import Piano from "./components/Piano.jsx"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { playSequence } from "./components/helpers"
 
 function App() {
   const [gameStarted, setGameStarted] = useState(false)
   const [score, setScore] = useState(0)
-
   function toggleGame() {
     setGameStarted((prevState) => !prevState)
     setScore(0)
   }
+
+  useEffect(() => {
+    if (gameStarted) playSequence()
+  }, [gameStarted])
 
   return (
     <div>
@@ -17,7 +21,7 @@ function App() {
       <button onClick={toggleGame}>
         {gameStarted ? "Stop" : "Start"} Game
       </button>
-      <Piano setScore={setScore} />
+      <Piano gameStarted={gameStarted} />
     </div>
   )
 }

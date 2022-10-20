@@ -1,18 +1,23 @@
 import Key from "./Key"
 import { useEffect, useState } from "react"
 import { NOTES, keyMap, songs } from "./constants"
+import { isUserSequenceCorrect, playAudio, validateUserInput } from "./helpers"
 
-const Piano = ({ setScore }) => {
+const Piano = ({ gameStarted }) => {
   const [selectedNote, setSelectedNote] = useState("")
+  const [userInputArr, setUserInputArr] = useState([])
+  const [sequenceCount, setSequenceCount] = useState(0)
 
   function handleKeyDown(event) {
     const userInput = event.key.toLowerCase()
-    for (let key in keyMap) {
-      if (userInput === key) {
-        setSelectedNote(keyMap[userInput])
-        setScore((currentScore) => currentScore + 1)
-      }
-    }
+    if (!keyMap[userInput]) return
+    if (!gameStarted) return
+    validateUserInput({
+      sequenceCount,
+      userNote: keyMap[userInput],
+      setUserInputArr,
+      setSequenceCount
+    })
   }
 
   useEffect(() => {
@@ -20,34 +25,13 @@ const Piano = ({ setScore }) => {
     return () => {
       window.removeEventListener("keydown", handleKeyDown)
     }
-  }, [])
+  }, [gameStarted, sequenceCount])
 
-  useEffect(playAudio, [selectedNote])
-
-  function playAudio() {
-    if (!selectedNote) return
-
-    const noteAudio = new Audio()
-    noteAudio.src = `assets/Notes/${selectedNote}.mp3`
-    noteAudio.play()
-  }
-
-  function playSequence() {
-    let time = 0
-    for (let i = 0; i <= 1; i++) {
-      setTimeout(
-        () =>
-          window.dispatchEvent(
-            new KeyboardEvent("keydown", { key: songs[0][i] })
-          ),
-        time
-      )
-      time += 1500
-    }
-  }
+  useEffect(() => playAudio(selectedNote), [selectedNote])
+  useEffect(() => isUserSequenceCorrect(userInputArr))
 
   return (
-    <div className="piano" onClick={playSequence}>
+    <div className="piano">
       {/* <audio src={`assets/Notes/${selectedNote}.mp3`}></audio> */}
       {NOTES.map((note, index) => (
         <Key key={`key-${index}`} note={note} selectedNote={selectedNote} />
