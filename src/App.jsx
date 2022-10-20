@@ -6,6 +6,12 @@ import { playSequence } from "./components/helpers"
 function App() {
   const [gameStarted, setGameStarted] = useState(false)
   const [score, setScore] = useState(0)
+
+  const pianoProps = {
+    gameStarted,
+    setScore
+  }
+
   function toggleGame() {
     setGameStarted((prevState) => !prevState)
     setScore(0)
@@ -21,7 +27,7 @@ function App() {
       <button onClick={toggleGame}>
         {gameStarted ? "Stop" : "Start"} Game
       </button>
-      <Piano gameStarted={gameStarted} />
+      <Piano {...pianoProps} />
     </div>
   )
 }

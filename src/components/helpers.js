@@ -5,15 +5,22 @@ function playSequence(song = songs) {
   for (let i = 0; i <= song.length; i++) {
     setTimeout(() => {
       const note = song[i]
-      const keyElNodelist = document.querySelectorAll(`[data-note]`)
-      const keyEl = document.querySelector(`[data-note=${note}]`)
-
-      keyElNodelist.forEach((key) => key.classList.remove("selectedKey"))
-      keyEl?.classList.add("selectedKey")
+      styleKey(note)
       playAudio(note)
     }, time)
     time += 1500
   }
+}
+
+function styleKey(note) {
+  const keyElNodelist = document.querySelectorAll(`[data-note]`)
+  const keyEl = document.querySelector(`[data-note=${note}]`)
+
+  keyElNodelist.forEach((key) => key.classList.remove("selectedKey"))
+  keyEl?.classList.add("selectedKey")
+  setTimeout(() => {
+    keyEl?.classList.remove("selectedKey")
+  }, 500)
 }
 
 function playAudio(selectedNote) {
@@ -25,6 +32,7 @@ function playAudio(selectedNote) {
 }
 
 function validateUserInput({
+  setScore,
   sequenceCount,
   userNote,
   setUserInputArr,
@@ -37,6 +45,7 @@ function validateUserInput({
   }
   setUserInputArr((prevArray) => [...prevArray, userNote])
   setSequenceCount((prevCount) => (prevCount += 1))
+  setScore((prevScore) => (prevScore += 1))
 }
 
 function isUserSequenceCorrect(userInputArr) {
@@ -46,4 +55,10 @@ function isUserSequenceCorrect(userInputArr) {
   }
 }
 
-export { playSequence, playAudio, validateUserInput, isUserSequenceCorrect }
+export {
+  playSequence,
+  playAudio,
+  validateUserInput,
+  isUserSequenceCorrect,
+  styleKey
+}

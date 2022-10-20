@@ -1,0 +1,4 @@
+[ ]  WHen user keydown, play sound and style
+    [x] COnfirm the key is being pressed
+    [x] Play audio
+    [ ] APply style to pressed key

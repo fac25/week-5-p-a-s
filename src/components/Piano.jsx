@@ -1,20 +1,30 @@
 import Key from "./Key"
 import { useEffect, useState } from "react"
 import { NOTES, keyMap, songs } from "./constants"
-import { isUserSequenceCorrect, playAudio, validateUserInput } from "./helpers"
+import {
+  isUserSequenceCorrect,
+  playAudio,
+  validateUserInput,
+  styleKey
+} from "./helpers"
 
-const Piano = ({ gameStarted }) => {
+const Piano = ({ gameStarted, setScore }) => {
   const [selectedNote, setSelectedNote] = useState("")
   const [userInputArr, setUserInputArr] = useState([])
   const [sequenceCount, setSequenceCount] = useState(0)
 
   function handleKeyDown(event) {
     const userInput = event.key.toLowerCase()
-    if (!keyMap[userInput]) return
+    const note = keyMap[userInput]
+    if (!note) return
+    styleKey(note)
+    playAudio(note)
+
     if (!gameStarted) return
     validateUserInput({
+      setScore,
       sequenceCount,
-      userNote: keyMap[userInput],
+      userNote: note,
       setUserInputArr,
       setSequenceCount
     })
