@@ -3,9 +3,6 @@
 ## [PKC](https://dynamic-torrone-f376c2.netlify.app/)
 It's a piano that counts the amount of keys you press. It has sound...
 
-
-
-
 ## User Stories
 - As a musican, i want to feel like i'm playing a piano.
 - As someone who loves listening to music, i want to be able to hear the audio.
@@ -61,14 +58,6 @@ In the `add-game` branch you might be able to find some experimental features.
 (After Lunch)
 - Deploy to netlify issue...
 
-Make sure there’s a README.md that describes the project
-
-
-
-
-
-
-
 ## Roles
 
 - Patrick: Scrum Facilitator
@@ -89,11 +78,9 @@ Run ```npm run dev``` to run the project
 Throughout our project we had severe challenges which led us to a new approach to solve problems.
 We learnt to split our issues into multiple small issues, create a list of tasks to work on in order and use pseudo-code before tackling the challenge.
 
-
 ## Tools Used
 Discord
 VS Code Live Share extension
 Github Project Board
 Software Methodologies
 During our planning stage, we identified there were functions and components that would be reused in the project. As a result, we decided to include modularization and attempted to follow the DRY principle.
-
