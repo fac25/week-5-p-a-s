@@ -1,4 +1,12 @@
-[ ]  WHen user keydown, play sound and style
-    [x] COnfirm the key is being pressed
+[ ]  When user keydown, play sound and style
+    [x] Confirm the key is being pressed
     [x] Play audio
-    [ ] APply style to pressed key
+    [ ] Apply style to pressed key
+
+[x] Show game over or game won based on game state
+    [x] Display a H2
+    [x] Include in the h2, the message from the state
+    [x] create a state which contains a string, default will be empty
+    [x] pass the state to piano as prop
+    [x] once gameOver, change state value to 'Game over'
+    [x] if game won, change state value to 'game won'S

@@ -16,6 +16,9 @@ body {
   height: 300px;
   width: 60px;
   border: 2px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .key.flat {
@@ -33,6 +36,10 @@ body {
   background-color: rgb(184, 184, 18)
 }
 
-.key.flat.selectedKey, .selectedKey {
+.key.selectedKey {
   background-color: grey;
+}
+
+.letter {
+  color: rgb(78, 113, 209);
 }

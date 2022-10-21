@@ -8,25 +8,26 @@ import {
   styleKey
 } from "./helpers"
 
-const Piano = ({ gameStarted, setScore }) => {
+const Piano = ({ gameStarted, setScore, setResultMessage }) => {
   const [selectedNote, setSelectedNote] = useState("")
   const [userInputArr, setUserInputArr] = useState([])
   const [sequenceCount, setSequenceCount] = useState(0)
 
   function handleKeyDown(event) {
     const userInput = event.key.toLowerCase()
-    const note = keyMap[userInput]
-    if (!note) return
-    styleKey(note)
-    playAudio(note)
+    const userNote = keyMap[userInput]
+    if (!userNote) return
+    styleKey(userNote)
+    playAudio(userNote)
 
     if (!gameStarted) return
     validateUserInput({
       setScore,
       sequenceCount,
-      userNote: note,
+      userNote,
       setUserInputArr,
-      setSequenceCount
+      setSequenceCount,
+      setResultMessage
     })
   }
 
@@ -38,13 +39,27 @@ const Piano = ({ gameStarted, setScore }) => {
   }, [gameStarted, sequenceCount])
 
   useEffect(() => playAudio(selectedNote), [selectedNote])
-  useEffect(() => isUserSequenceCorrect(userInputArr))
+  useEffect(() => isUserSequenceCorrect(userInputArr, setResultMessage))
 
   return (
     <div className="piano">
+      <audio src={`assets/Notes/${selectedNote}.mp3`}></audio>
+      {/* {NOTES.map((note, index) => (
+        <Key
+          key={`key-${index}`}
+          note={note}
+          selectedNote={selectedNote}
+          keyMap={keyMap}
+        />
+      ))} */}
       {/* <audio src={`assets/Notes/${selectedNote}.mp3`}></audio> */}
-      {NOTES.map((note, index) => (
-        <Key key={`key-${index}`} note={note} selectedNote={selectedNote} />
+      {Object.keys(keyMap).map((note, index) => (
+        <Key
+          key={`key-${index}`}
+          note={keyMap[note]}
+          selectedNote={selectedNote}
+          letter={note}
+        />
       ))}
     </div>
   )

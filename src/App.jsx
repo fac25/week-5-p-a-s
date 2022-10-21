@@ -3,16 +3,12 @@ import Piano from "./components/Piano.jsx"
 import { useEffect, useState } from "react"
 import { playSequence } from "./components/helpers"
 
-function App() {
+const App = () => {
   const [gameStarted, setGameStarted] = useState(false)
   const [score, setScore] = useState(0)
+  const [resultMessage, setResultMessage] = useState("")
 
-  const pianoProps = {
-    gameStarted,
-    setScore
-  }
-
-  function toggleGame() {
+  const toggleGame = () => {
     setGameStarted((prevState) => !prevState)
     setScore(0)
   }
@@ -23,13 +19,21 @@ function App() {
 
   return (
     <div>
-      {gameStarted && <h1>Keys Pressed {score} Times</h1>}
+      {gameStarted && <h1>Player score: {score}</h1>}
+      {gameStarted && <h2>{resultMessage}</h2>}
       <button onClick={toggleGame}>
         {gameStarted ? "Stop" : "Start"} Game
       </button>
-      <Piano {...pianoProps} />
+
+      <Piano
+        gameStarted={gameStarted}
+        setScore={setScore}
+        setResultMessage={setResultMessage}
+      />
     </div>
   )
 }
+
+
 
 export default App

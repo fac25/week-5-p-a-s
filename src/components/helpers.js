@@ -1,6 +1,6 @@
 import { songs } from "./constants.js"
 
-function playSequence(song = songs) {
+const playSequence = (song = songs) => {
   let time = 0
   for (let i = 0; i <= song.length; i++) {
     setTimeout(() => {
@@ -8,11 +8,11 @@ function playSequence(song = songs) {
       styleKey(note)
       playAudio(note)
     }, time)
-    time += 1500
+    time += 300
   }
 }
 
-function styleKey(note) {
+const styleKey = (note) => {
   const keyElNodelist = document.querySelectorAll(`[data-note]`)
   const keyEl = document.querySelector(`[data-note=${note}]`)
 
@@ -20,38 +20,37 @@ function styleKey(note) {
   keyEl?.classList.add("selectedKey")
   setTimeout(() => {
     keyEl?.classList.remove("selectedKey")
-  }, 500)
+  }, 1000)
 }
 
-function playAudio(selectedNote) {
-  if (!selectedNote) return
-
+const playAudio = (userNote) => {
   const noteAudio = new Audio()
-  noteAudio.src = `assets/Notes/${selectedNote}.mp3`
+  noteAudio.src = `assets/Notes/${userNote}.mp3`
   noteAudio.play()
 }
 
-function validateUserInput({
+const validateUserInput = ({
   setScore,
   sequenceCount,
   userNote,
   setUserInputArr,
-  setSequenceCount
-}) {
+  setSequenceCount,
+  setResultMessage
+}) => {
   const sequenceNote = songs[sequenceCount]
   if (userNote !== sequenceNote) {
-    console.log("Try next time")
+    setResultMessage("Game Over")
     return
   }
   setUserInputArr((prevArray) => [...prevArray, userNote])
-  setSequenceCount((prevCount) => (prevCount += 1))
-  setScore((prevScore) => (prevScore += 1))
+  setSequenceCount((prevCount) => prevCount + 1)
+  setScore((prevScore) => prevScore + 1)
 }
 
-function isUserSequenceCorrect(userInputArr) {
+const isUserSequenceCorrect = (userInputArr, setResultMessage) => {
   const sequenceArr = songs
   if (sequenceArr.length === userInputArr.length) {
-    console.log("You won")
+    setResultMessage("Game Won")
   }
 }
 
