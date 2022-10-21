@@ -52,11 +52,23 @@ In the `add-game` branch you might be able to find some experimental features.
 
 #### Thursday
 (Before Lunch)
-- Create loop to validate user input
+- Create loop to validate user input attempt
 - Worked in pairs of 3 with 10min rotations
 
 (After Lunch)
 - Deploy to netlify issue...
+- Completed Create Loop to validate user input
+- Refactored our codes to be able to solve the problems
+
+#### Friday
+(Before Lunch)
+- Reviewed our codes together from the start
+- Added display message for game won / game over
+- Added key displays on our piano
+- Minor refeactoring of our codes
+
+(After Lunch)
+- [Presentation]()
 
 ## Roles
 
