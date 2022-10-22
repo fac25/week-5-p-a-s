@@ -68,7 +68,7 @@ In the `add-game` branch you might be able to find some experimental features.
 - Minor refeactoring of our codes
 
 (After Lunch)
-- [Presentation]()
+- [Presentation](https://hackmd.io/@TkRA-CdIQ6qbRwPLE781OA/BJT2vSbVs#/)
 
 ## Roles
 
